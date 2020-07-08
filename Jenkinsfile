@@ -31,10 +31,10 @@ pipeline {
                     }
                }
           }
-          stage('Deploy') {
-               steps {
-                    ansiblePlaybook playbook: 'main.yaml', inventory: 'inventory'
-               }
-          }       
+          // stage('Deploy') {
+          //      steps {
+          //           ansiblePlaybook playbook: 'main.yaml', inventory: 'inventory'
+          //      }
+          // }       
      }
 }    
