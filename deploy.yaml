@@ -10,7 +10,6 @@
       command: minikube status
       register: minikube_status
       become: true
-      become_flags: '-s /bin/sh'
       changed_when: false
       ignore_errors: true
     # Otherwise will start minikube
