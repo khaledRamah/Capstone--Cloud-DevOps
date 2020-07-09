@@ -1,9 +1,44 @@
-- name: Check Minikube's status.
-    command: minikube status
-    register: minikube_status
-    changed_when: false
-    ignore_errors: true
-    # Otherwise will start minikube
-- name: Start Minikube if it's not running.
-    command: minikube start
-    when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
+# Create Kubernetes resources to run webserver
+- name: Create a Deployment for webserver
+  k8s:
+    state: present
+    definition:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: webserver
+        namespace: default
+      spec:
+        replicas: 1
+        selector:
+          matchLabels:
+            app: webserver
+        template:
+          metadata:
+            labels:
+              app: webserver
+          spec:
+            containers:
+            - name: webserver
+              image: "{{ image_name }}:{{ image_tag }}"
+              imagePullPolicy: IfNotPresent
+              ports:
+              - containerPort: 8180
+
+# Create Kubernetes Service (DNS required)
+- name: Create a Service for webserver.
+  k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: webserver
+        namespace: default
+      spec:
+        type: LoadBalancer
+        ports:
+        - port: 8180
+          targetPort: 8180
+        selector:
+          app: webserver

@@ -4,7 +4,25 @@
   vars:
     ansible_python_interpreter: /usr/bin/python2
     application: finalproject
+  pre_tasks:
+    - name: Check Minikube's status.
+      command: minikube status
+      register: minikube_status
+      changed_when: false
+      ignore_errors: true
+    # Otherwise will start minikube
+    - name: Start Minikube if it's not running.
+      command: minikube start
+      when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
   tasks:
-    # - name: create instances
-    #   include_role: 
-    #     name: create_instance
+    - name: init minikube
+      include_role: 
+        name: check_minikube
+  post_tasks:
+      #Example export using minikube services
+      - name: Expose webserver on the host via Minikube.
+        command: minikube service webserver --url=true
+        changed_when: false
+        register: minikube_service
+      - debug:
+          msg: "webserver URL: {{ minikube_service['stdout_lines'][0] }}"
