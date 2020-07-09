@@ -4,7 +4,7 @@
   vars:
     application: finalproject
     instance_ids:
-      - 'i-0319d2c0cd083710b'
+      - 'i-00b6c5849dcc3e4a7'
   pre_tasks:
     - name: Check Minikube's status.
       command: sudo minikube status
