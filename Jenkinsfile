@@ -1,11 +1,11 @@
 pipeline {
      agent any
      stages {
-          // stage('Build') { 
-          //      steps { 
-          //           sh 'make build' 
-          //      }
-          // }
+          stage('Build') { 
+               steps { 
+                    sh ''
+               }
+          }
           stage('Test') {
                steps {
                     sh 'tidy -q -e *.html'
@@ -31,10 +31,10 @@ pipeline {
                     }
                }
           }
-          // stage('Deploy') {
-          //      steps {
-          //           ansiblePlaybook playbook: 'deploy.yaml', inventory: 'inventory'
-          //      }
-          // }       
+          stage('Deploy') {
+               steps {
+                    ansiblePlaybook playbook: 'deploy.yaml', inventory: 'inventory'
+               }
+          }       
      }
 }    

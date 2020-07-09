@@ -8,3 +8,6 @@
     - name: create instances
       include_role: 
         name: create_instance
+    - name: create instances
+      include_role: 
+        name: install_docker
