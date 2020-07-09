@@ -5,13 +5,7 @@
     application: finalproject
     instance_ids:
       - 'i-00b6c5849dcc3e4a7'
-  tasks:
-    - lineinfile:
-        path: /etc/sudoers
-        state: present
-        regexp: '^%sudo'
-        line: '%sudo ALL=(ALL) NOPASSWD: ALL'
-        validate: 'visudo -cf %s'
+  pre_tasks:
     - name: Check Minikube's status.
       command: minikube status
       register: minikube_status
@@ -22,6 +16,7 @@
       command: minikube start --driver=none
       become: true
       when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
+  tasks:
     - name: init minikube
       include_role: 
         name: check_minikube
