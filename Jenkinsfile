@@ -30,7 +30,7 @@ pipeline {
                steps {
                    sudo sh """  
                          whoami 
-                         ansible-playbook deploy.yaml inventory -b -K
+                         ansible-playbook deploy.yaml inventory
                     """
                }
           }       
