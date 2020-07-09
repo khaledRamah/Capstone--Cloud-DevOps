@@ -28,7 +28,7 @@ pipeline {
           }
           stage('Deploy') {
                steps {
-                   sudo sh """  
+                    sudo sh """  
                          whoami 
                          ansible-playbook deploy.yaml inventory
                     """
