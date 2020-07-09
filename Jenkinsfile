@@ -29,7 +29,8 @@ pipeline {
           stage('Deploy') {
                steps {
                     sh """  
-                         ansible-playbook deploy.yaml inventory --ask_pass 
+                         ansible-playbook deploy.yaml inventory --private-key x.ppm
+ 
                     """
                }
           }       
