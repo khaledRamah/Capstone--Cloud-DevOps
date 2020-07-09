@@ -5,9 +5,6 @@
     ansible_python_interpreter: /usr/bin/python2
     application: finalproject
   tasks:
-    - name: create instances
-      include_role: 
-        name: create_instance
-    - name: create instances
-      include_role: 
-        name: install_docker
+    # - name: create instances
+    #   include_role: 
+    #     name: create_instance
