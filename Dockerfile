@@ -1,9 +1,15 @@
 FROM nginx:latest
 
-COPY index.html /usr/share/nginx/html
+WORKDIR /app
+
+COPY . /app/
+
+RUN ls 
 
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
-RUN sudo systemctl restart nginx
+RUN cat /etc/nginx/conf.d/default.conf
+
+RUN nginx
 
 EXPOSE 80
