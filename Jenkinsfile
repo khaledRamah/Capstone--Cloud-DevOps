@@ -1,14 +1,9 @@
 pipeline {
      agent any
      stages {
-          stage('Build') { 
-               steps { 
-                    sh ''
-               }
-          }
           stage('Test') {
                steps {
-                    sh 'tidy -q -e *.html'
+                    sh 'tidy -q -e project/*.html'
                }
           }
           // stage('Security Scan') {
