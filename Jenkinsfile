@@ -28,7 +28,9 @@ pipeline {
           }
           stage('Deploy') {
                steps {
-                    ansiblePlaybook playbook: 'deploy.yaml', inventory: 'inventory'
+                    sh """  
+                    ansible-playbook deploy.yaml inventory --ask-pass
+                    """
                }
           }       
      }
