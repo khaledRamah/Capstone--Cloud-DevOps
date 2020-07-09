@@ -20,7 +20,7 @@
           spec:
             containers:
             - name: webserver
-              image: "{{ image_name }}:{{ image_tag }}"
+              image: "khaledgamalelsayed/webserver"
               imagePullPolicy: IfNotPresent
               ports:
               - containerPort: 8180
