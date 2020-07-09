@@ -8,7 +8,7 @@
   pre_tasks:
     - name: Check Minikube's status.
       command: minikube status
-      become: true
+      ask_pass : false
       register: minikube_status
       changed_when: false
       ignore_errors: true
