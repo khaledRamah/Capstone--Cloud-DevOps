@@ -29,7 +29,7 @@ pipeline {
           stage('Deploy') {
                steps {
                     sh """  
-                         ansible-playbook deploy.yaml inventory --become sudo
+                         ansible-playbook deploy.yaml inventory --become-user sudo
                     """
                }
           }       
