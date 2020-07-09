@@ -12,7 +12,7 @@
       ignore_errors: true
     # Otherwise will start minikube
     - name: Start Minikube if it's not running.
-      command: sudo minikube start
+      command: sudo minikube start --driver=none
       when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
   tasks:
     - name: init minikube
