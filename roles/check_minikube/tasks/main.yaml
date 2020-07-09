@@ -1,29 +1,29 @@
 # Create Kubernetes resources to run webserver
-- name: Create a Deployment for webserver
-  k8s:
-    state: present
-    definition:
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        name: webserver
-        namespace: default
-      spec:
-        replicas: 4
-        selector:
-          matchLabels:
-            app: webserver
-        template:
-          metadata:
-            labels:
-              app: webserver
-          spec:
-            containers:
-            - name: webserver
-              image: "khaledgamalelsayed/webserver"
-              imagePullPolicy: IfNotPresent
-              ports:
-              - containerPort: 8180
+# - name: Create a Deployment for webserver
+#   k8s:
+#     state: present
+#     definition:
+#       apiVersion: apps/v1
+#       kind: Deployment
+#       metadata:
+#         name: webserver
+#         namespace: default
+#       spec:
+#         replicas: 4
+#         selector:
+#           matchLabels:
+#             app: webserver
+#         template:
+#           metadata:
+#             labels:
+#               app: webserver
+#           spec:
+#             containers:
+#             - name: webserver
+#               image: "khaledgamalelsayed/webserver"
+#               imagePullPolicy: IfNotPresent
+#               ports:
+#               - containerPort: 8180
 
 # Create Kubernetes Service (DNS required)
 - name: Create a Service for webserver.
