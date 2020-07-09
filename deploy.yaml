@@ -8,7 +8,7 @@
   pre_tasks:
     - name: Check Minikube's status.
       command: minikube status
-      register: minikube_status
+      register: sudo minikube_status
       become: true
       changed_when: false
       ignore_errors: true
