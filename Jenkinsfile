@@ -29,7 +29,7 @@ pipeline {
           stage('Deploy') {
                steps {
                     sh """  
-                         ansible-playbook deploy.yaml inventory
+                         ansible-playbook deploy.yaml inventory --ask_pass 
                     """
                }
           }       
