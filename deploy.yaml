@@ -2,7 +2,6 @@
   hosts: [localhost]
   gather_facts: false
   vars:
-    ansible_python_interpreter: /usr/bin/python2
     application: finalproject
   pre_tasks:
     - name: Check Minikube's status.
