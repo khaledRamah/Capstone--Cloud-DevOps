@@ -3,6 +3,8 @@
   gather_facts: false
   vars:
     application: finalproject
+    instance_ids:
+      - 'i-0319d2c0cd083710b'
   pre_tasks:
     - name: Check Minikube's status.
       command: sudo minikube status
