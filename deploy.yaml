@@ -7,12 +7,12 @@
       - 'i-00b6c5849dcc3e4a7'
   pre_tasks:
     - name: Check Minikube's status.
-      raw: minikube status
+      command: whoami && minikube status
       register: minikube_status
       changed_when: false
       ignore_errors: true
     # Otherwise will start minikube
-    - raw: Start Minikube if it's not running.
+    - name: Start Minikube if it's not running.
       command: minikube start --driver=none
       when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
   tasks:
