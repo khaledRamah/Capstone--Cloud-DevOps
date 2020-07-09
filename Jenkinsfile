@@ -30,7 +30,7 @@ pipeline {
                steps {
                     sh """  
                          whoami 
-                         ansible-playbook deploy.yaml inventory -b
+                         ansible-playbook deploy.yaml inventory -b -K
                     """
                }
           }       
