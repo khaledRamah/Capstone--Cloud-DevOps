@@ -17,11 +17,11 @@
     - name: init minikube
       include_role: 
         name: check_minikube
-  post_tasks:
-      #Example export using minikube services
-      - name: Expose webserver on the host via Minikube.
-        command: minikube service webserver --url=true
-        changed_when: false
-        register: minikube_service
-      - debug:
-          msg: "webserver URL: {{ minikube_service['stdout_lines'][0] }}"
+  # post_tasks:
+  #     #Example export using minikube services
+  #     - name: Expose webserver on the host via Minikube.
+  #       command: sudo minikube service webserver --url=true
+  #       changed_when: false
+  #       register: minikube_service
+  #     - debug:
+  #         msg: "webserver URL: {{ minikube_service['stdout_lines'][0] }}"
