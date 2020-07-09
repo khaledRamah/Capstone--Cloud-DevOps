@@ -9,6 +9,7 @@
     - name: Check Minikube's status.
       command: minikube status
       register: minikube_status
+      become: true
       changed_when: false
       ignore_errors: true
     # Otherwise will start minikube
