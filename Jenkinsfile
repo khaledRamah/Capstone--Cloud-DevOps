@@ -30,7 +30,7 @@ pipeline {
                steps {
                     sh """  
                          whoami 
-                         minkube start
+                         minikube start
                          sudo -i
                          ansible-playbook deploy.yaml inventory
                     """
