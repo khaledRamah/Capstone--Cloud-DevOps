@@ -15,6 +15,7 @@
     # Otherwise will start minikube
     - name: Start Minikube if it's not running.
       command: minikube start --driver=none
+      become: true
       when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
   tasks:
     - name: init minikube
