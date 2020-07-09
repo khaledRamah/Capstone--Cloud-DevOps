@@ -6,13 +6,13 @@
     application: finalproject
   pre_tasks:
     - name: Check Minikube's status.
-      command: minikube status
+      command: sudo minikube status
       register: minikube_status
       changed_when: false
       ignore_errors: true
     # Otherwise will start minikube
     - name: Start Minikube if it's not running.
-      command: minikube start
+      command: sudo minikube start
       when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
   tasks:
     - name: init minikube
