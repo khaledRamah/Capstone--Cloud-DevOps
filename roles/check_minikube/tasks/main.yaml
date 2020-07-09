@@ -1,2 +1,2 @@
 - name: Get running status
-  raw: sudo kubectl run webserver --generator=run-pod/v1 --image=khaledgamalelsayed/webserver  --port=80 --labels app=webserverdemo
+  raw: sudo kubectl run webserver --generator=run-pod/v1 --image=khaledgamalelsayed/webserver  --port=80 --labels app=webserverdemo && sudo kubectl port-forward predectiondemo 8000:80
