@@ -30,6 +30,7 @@ pipeline {
         // }
         stage("Development deploy"){
             steps {
+                sh("kubectl config arn:aws:eks:us-west-2:874698838459:cluster/prod")
                 sh("kubectl apply -f controller/Development-controller.json")
             }
         }
