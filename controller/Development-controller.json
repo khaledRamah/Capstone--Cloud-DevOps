@@ -1,0 +1,37 @@
+{
+   "kind":"ReplicationController",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"develpment",
+      "labels":{
+         "app":"develpment"
+      }
+   },
+   "spec":{
+      "replicas":1,
+      "selector":{
+         "app":"develpment"
+      },
+      "template":{
+         "metadata":{
+            "labels":{
+               "app":"develpment"
+            }
+         },
+         "spec":{
+            "containers":[
+               {
+                  "name":"develpment",
+                  "image":"khaledgamalelsayed/webserver",
+                  "ports":[
+                     {
+                        "name":"http-server",
+                        "containerPort":80
+                     }
+                  ]
+               }
+            ]
+         }
+      }
+   }
+}

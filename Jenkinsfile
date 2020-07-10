@@ -22,12 +22,16 @@ pipeline {
                 }
             }
         }
-//         stage('Remove local images') {
-//             steps {
-//                 echo '=== Delete the local docker images ==='
-//                 sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:latest || :")
-//                 sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
-//             }
-//         }
+        stage('Remove local images') {
+            steps {
+                echo '=== Delete the local docker images ==='
+                sh("docker rmi -f khaledgamalelsayed/webserver")
+            }
+        }
+        stage("Development deploy"){
+            steps {
+                sh("kubectl apply -f controller/Development-controller.json")
+            }
+        }
      }
 }
