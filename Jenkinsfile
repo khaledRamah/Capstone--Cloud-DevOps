@@ -10,9 +10,6 @@ pipeline {
             }
         }
         stage('Push Docker Image') {
-            when {
-                branch 'master'
-            }
             steps {
                 echo '=== Pushing Petclinic Docker Image ==='
                 script {
