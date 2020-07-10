@@ -32,5 +32,5 @@ pipeline {
 //                 sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
 //             }
 //         }
-//     }
+     }
 }
