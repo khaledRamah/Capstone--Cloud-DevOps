@@ -45,7 +45,7 @@ pipeline {
         }
         stage("Development deploy"){
             steps {
-                sh("kubectl config use-context arn:aws:eks:us-west-2:874698838459:cluster/prod")
+                sh("kubectl config use-context iam-root-account@prod.us-west-2.eksctl.io")
                 sh("kubectl apply -f controller/Development-controller.json")
             }
         }
