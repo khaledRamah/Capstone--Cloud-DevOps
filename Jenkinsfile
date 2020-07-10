@@ -31,7 +31,7 @@ pipeline {
         stage("Blue Deploy"){
             steps {
                 sh("kubectl")
-                sh("kubectl get pods")
+                sh("kubectl get -h")
                 sh("kubectl get services")
                 sh("kubectl patch service bluegreenlb -p '{\"spec\":{\"selector\":{\"app\": \"blue\"}}}'")
             }
