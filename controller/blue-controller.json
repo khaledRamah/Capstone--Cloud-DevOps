@@ -2,26 +2,26 @@
    "kind":"ReplicationController",
    "apiVersion":"v1",
    "metadata":{
-      "name":"develpment",
+      "name":"blue",
       "labels":{
-         "app":"develpment"
+         "app":"blue"
       }
    },
    "spec":{
       "replicas":1,
       "selector":{
-         "app":"develpment"
+         "app":"blue"
       },
       "template":{
          "metadata":{
             "labels":{
-               "app":"develpment"
+               "app":"blue"
             }
          },
          "spec":{
             "containers":[
                {
-                  "name":"develpment",
+                  "name":"blue",
                   "image":"khaledgamalelsayed/webserver",
                   "ports":[
                      {
