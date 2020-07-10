@@ -5,6 +5,7 @@ pipeline {
             steps {
                 echo '=== Building Petclinic Docker Image ==='
                 script {
+                     whoami
                     app = docker.build("khaledgamalelsayed/webserver")
                 }
             }
