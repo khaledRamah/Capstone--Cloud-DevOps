@@ -1,14 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Build Docker Image') {
-            steps {
-                echo '=== Building Petclinic Docker Image ==='
-                script {
-                    app = docker.build("khaledgamalelsayed/webserver")
-                }
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         echo '=== Building Petclinic Docker Image ==='
+        //         script {
+        //             app = docker.build("khaledgamalelsayed/webserver")
+        //         }
+        //     }
+        // }
         // stage('Push Docker Image') {
         //     steps {
         //         echo '=== Pushing Petclinic Docker Image ==='
@@ -30,7 +30,7 @@ pipeline {
         // }
         stage("Development deploy"){
             steps {
-                sh("kubectl config arn:aws:eks:us-west-2:874698838459:cluster/prod")
+                sh("kubectl config use-context  arn:aws:eks:us-west-2:874698838459:cluster/prod")
                 sh("kubectl apply -f controller/Development-controller.json")
             }
         }
