@@ -28,9 +28,9 @@ pipeline {
         //         sh("docker rmi -f khaledgamalelsayed/webserver")
         //     }
         // }
-        stage("Deploy"){
+        stage("Blue Deploy"){
             steps {
-                sh("kubectl apply -f controller/blue-controller.json")
+                sh("kubectl patch service bluegreenlb -p '{"spec":{"selector":{"app": "blue"}}}'")
             }
         }
      }
