@@ -29,12 +29,11 @@ pipeline {
         //     }
         // }
         stage("Blue Deploy"){
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'MyCredAWS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
             steps {
-                sh("kubectl config view")
-                sh("whoami")
-                // sh("kubectl get -h")
-                // sh("kubectl get services")
-                // sh("kubectl patch service bluegreenlb -p '{\"spec\":{\"selector\":{\"app\": \"blue\"}}}'")
+                
+                 sh("kubectl config view --kubeconfig ")
+                 sh("kubectl patch service bluegreenlb -p '{\"spec\":{\"selector\":{\"app\": \"blue\"}}}'")
             }
         }
      }
