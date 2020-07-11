@@ -32,7 +32,7 @@ pipeline {
             withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'MyCredAWS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
             steps {
                 
-                 sh("kubectl config view --kubeconfig ")
+                 sh("cat ~/.kube/config")
                  sh("kubectl patch service bluegreenlb -p '{\"spec\":{\"selector\":{\"app\": \"blue\"}}}'")
             }
         }
